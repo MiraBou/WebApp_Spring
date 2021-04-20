@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymleaf/layout"
+      layout:decorator="layout.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div layout:fraagment="content">
+<div class="card">
+    <div class="card-header" th:if="${patient.id==null}">Ajouter Patient</div>
+    <div class="card-header" th:if="${patient.id!=null}">Modifier Patient</div>
+
+    <ul class="list-group list-group-flush">
+        <form method="post" th:action="@{/validerPatient}" >
+                <li class="list-group-item">
+
+                    <label for="patId">Id: </label>
+                    <label th:text="${patient.id}"></label>
+
+                    <input type="hidden" id="patId" name="id" class="form-control" th:value="${patient.id}">
+            </li>
+
+            <li class="list-group-item">
+                <label for="patNom">Nom: </label>
+                <input type="text"  id="patNom" name="nom" class="form-control" th:value="${patient.nom}"></li>
+            <li class="list-group-item">
+
+                    <label for="patDateNaiss">Date Naissance: </label>
+                    <input type="date" id="patDateNaiss" name="dateNaissance" class="form-control" th:value="${patient.dateNaissance}">
+            </li>
+
+            <li class="list-group-item">
+
+            <label for="patScore">Score: </label>
+                    <input type="text" id="patScore" name="score" class="form-control" th:value="${patient.score}">
+            </li>
+            <li class="list-group-item pl-5">
+                 <input class="form-check-input" type="checkbox"  id="flexCheckDefault" name="malade"
+                        th:value="${patient.malade}"
+                        th:checked="${patient.malade}"
+                        onclick="this.value = this.checked"
+                        >
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Malade [Si oui cochez la case]
+                    </label>
+            </li>
+            <li class="list-group-item pl-5">
+
+            <button type="submit" class="btn btn-primary mt-auto ml-5">Valider</button>
+            </li>
+        </form>
+        </ul>
+
+</div></div>
+</body>
+</html>
