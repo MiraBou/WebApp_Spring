@@ -18,6 +18,6 @@ public class patient {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateNaissance;
     private int score;
-    private Boolean malade;
+    private Boolean malade=false;
 
 }
